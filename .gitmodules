@@ -1,3 +1,4 @@
 [submodule "image_similarity_measures_library"]
 	path = image_similarity_measures_library
-	url = https://github.com/Chief-Zach/image_similarity_measures_library
+	url = https://github.com/Chief-Zach/image_similarity_measures_library.git
+	branch=master
