@@ -24,8 +24,8 @@ def main(argv):
                 print(f"{arg} is not a valid mode")
                 sys.exit()
         else:
-            print('twitterComparison.py -m single -t <twitterID> -i <image name>')
-            print('twitterComparison.py -m batch -t <twitterID> -b <id batch>')
+            print('twitterComparison.py -m single -t <51946511351655> -i <image1>')
+            print('twitterComparison.py -m batch -t <5191654919516519,23453457345623452,134524573452334> -i <image1>')
             sys.exit()
     try:
         if mode == "single":
