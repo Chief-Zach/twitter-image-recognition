@@ -27,7 +27,7 @@ def isSame(metricList, metricJson):
     return True, "Pass"
 
 
-def singleCompare(comparisonImage, user_id, metricList = ["sre", "fsim", "psnr", "rmse"]):
+def singleCompare(comparisonImage, user_id, metricList=["sre", "fsim", "psnr", "rmse"]):
     comparisonImage = f"images/comparisons/{comparisonImage}"
     imageURL, imageName = twitterSearch.fetch_image(user_id=user_id)  # backup ID 1517894403758641152
     twitterImage = f"images/twitter/twitterImage{imageName}"
@@ -52,9 +52,9 @@ def singleCompare(comparisonImage, user_id, metricList = ["sre", "fsim", "psnr",
     print(isSame(metricList, finalJson["metric"]))
 
 
-def batchCompare(user_ids, comparisonImage="images/comparisons/image1"):
+def batchCompare(user_ids, comparisonImage, metricList=["sre", "fsim", "psnr", "rmse"]):
     compResults = {}
-
+    comparisonImage = f"images/comparisons/{comparisonImage}"
     comp = Image.open(f"{comparisonImage}.jpg").convert("RGB")
     comp.save(f"{comparisonImage}.tif", 'TIFF')
 
@@ -65,7 +65,6 @@ def batchCompare(user_ids, comparisonImage="images/comparisons/image1"):
         twitter = Image.open(f"{twitterImage}.jpg").convert("RGB")
         twitter = twitter.resize(comp.size, Image.ANTIALIAS)
         twitter.save(f"{twitterImage}.tif", 'TIFF')
-        metricList = ["sre", "fsim", "psnr", "rmse"]
         finalJson = similarity.evaluate.main(f"{twitterImage}.tif", f"{comparisonImage}.tif", metricList)
         # print(finalJson["metric"])
         output = isSame(metricList, finalJson["metric"])
@@ -75,4 +74,4 @@ def batchCompare(user_ids, comparisonImage="images/comparisons/image1"):
 
 
 # singleCompare("images/comparisons/oni1", 1517894403758641152)
-# batchCompare([1436756733775552516, 1517894403758641152, 1375234369636331522], "images/comparisons/image1")
+# batchCompare([1436756733775552516,1517894403758641152,1375234369636331522], "images/comparisons/image1")

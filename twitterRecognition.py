@@ -24,7 +24,7 @@ def main(argv):
             twitterID = int(arg)
         elif opt in ("-i", "--image"):
             image = arg
-        elif opt in ("-d", "--directory"):
+        elif opt in ("-b", "--batch"):
             batch = arg.split(",")
         elif opt in ("-m", "--mode"):
             if arg == "single" or arg == "batch":
