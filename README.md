@@ -1,4 +1,13 @@
 # Twitter Profile Picture Analyzer
+
+### Instillation
+```
+git clone https://github.com/Chief-Zach/twitter-image-recognition 
+```
+
+This is recommended because changes were made to some libraries in order to improve performance with the program.
+This will install the VENV to your system allowing for the use of 
+
 ### Useable Metrics 
 - [Root mean square error (RMSE)](https://en.wikipedia.org/wiki/Root-mean-square_deviation)
 - [Peak signal-to-noise ratio (PSNR)](https://en.wikipedia.org/wiki/Peak_signal-to-noise_ratio)
