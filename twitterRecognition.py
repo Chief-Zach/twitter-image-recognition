@@ -3,14 +3,20 @@ import sys, getopt
 
 
 def main(argv):
-    print(argv)
-    opts, args = getopt.getopt(argv, "hm:t:i:b:", ["mode=", "twitter=", "image=", "batch="])
+    # print(argv)
+    opts, args = getopt.getopt(argv, "hu:m:t:i:b:", ["metrics=", "mode=", "twitter=", "image=", "batch="])
+    metric = False
     for opt, arg in opts:
-        print(opts, arg)
+        # print(opts, arg)
         if opt == "-h":
             print('twitterComparison.py -m single -t <twitterID> -i <image name>')
             print('twitterComparison.py -m batch -t <twitterID> -b <id batch>')
             sys.exit()
+        elif opt in ("-u", "--metrics"):
+            metrics = arg
+            if "," in metrics:
+                metrics = metrics.split(",")
+            metric = True
         elif opt in ("-t", "--twitter"):
             twitterID = int(arg)
         elif opt in ("-i", "--image"):
@@ -29,12 +35,18 @@ def main(argv):
             sys.exit()
     try:
         if mode == "single":
-            imageComparison.singleCompare(image, twitterID)
+            if metric:
+                imageComparison.singleCompare(image, twitterID, [metrics])
+            else:
+                imageComparison.singleCompare(image, twitterID)
         elif mode == "batch":
-            imageComparison.batchCompare(batch, image)
-    except UnboundLocalError:
-        print('twitterComparison.py -m single -t <twitterID> -i <image name>')
-        print('twitterComparison.py -m batch -t <twitterID> -b <id batch>')
+            if metric:
+                imageComparison.batchCompare(batch, image, [metrics])
+            else:
+                imageComparison.batchCompare(image, twitterID)
+    except UnboundLocalError as e:
+        print('twitterComparison.py -m single -t <51946511351655> -i <image1>')
+        print('twitterComparison.py -m batch -t <5191654919516519,23453457345623452,134524573452334> -i <image1>')
         sys.exit()
 
 
