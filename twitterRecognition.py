@@ -6,6 +6,7 @@ def main(argv):
     # print(argv)
     opts, args = getopt.getopt(argv, "hu:m:t:i:b:", ["metrics=", "mode=", "twitter=", "image=", "batch="])
     metric = False
+    metricList = []
     for opt, arg in opts:
         # print(opts, arg)
         if opt == "-h":
@@ -15,7 +16,9 @@ def main(argv):
         elif opt in ("-u", "--metrics"):
             metrics = arg
             if "," in metrics:
-                metrics = metrics.split(",")
+                metricList = metrics.split(",")
+            else:
+                metricList.append(metrics)
             metric = True
         elif opt in ("-t", "--twitter"):
             twitterID = int(arg)
@@ -36,12 +39,12 @@ def main(argv):
     try:
         if mode == "single":
             if metric:
-                imageComparison.singleCompare(image, twitterID, [metrics])
+                imageComparison.singleCompare(image, twitterID, metricList)
             else:
                 imageComparison.singleCompare(image, twitterID)
         elif mode == "batch":
             if metric:
-                imageComparison.batchCompare(batch, image, [metrics])
+                imageComparison.batchCompare(batch, image, metricList)
             else:
                 imageComparison.batchCompare(image, twitterID)
     except UnboundLocalError as e:
