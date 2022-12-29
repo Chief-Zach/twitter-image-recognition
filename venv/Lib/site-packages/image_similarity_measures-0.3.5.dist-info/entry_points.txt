@@ -1,0 +1,3 @@
+[console_scripts]
+image-similarity-measures = image_similarity_measures.evaluate:main
+
