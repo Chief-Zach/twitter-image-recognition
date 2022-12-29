@@ -1,12 +1,11 @@
 /.env
 /venv/
 /.idea/.gitignore
-/images/comparisons/*
 /.idea/misc.xml
 /.idea/modules.xml
-/images/comparisons/oni1.jpg
 /.idea/inspectionProfiles/profiles_settings.xml
 /.idea/inspectionProfiles/Project_Default.xml
 /.idea/twitter-image-recognition.iml
-/images/twitter/*
 /.idea/vcs.xml
+/images/comparisons/*
+/images/twitter/*
