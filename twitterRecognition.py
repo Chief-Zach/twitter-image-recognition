@@ -13,7 +13,7 @@ def main(argv):
             print('twitterComparison.py -m batch -t <twitterID> -b <id batch>')
             sys.exit()
         elif opt in ("-t", "--twitter"):
-            twitterID = arg
+            twitterID = int(arg)
         elif opt in ("-i", "--image"):
             image = arg
         elif opt in ("-d", "--directory"):
