@@ -15,9 +15,6 @@ api = tweepy.API(auth)
 
 
 class InvalidEntry(Exception):
-    min_f = 32
-    max_f = 212
-
     def __init__(self, username, user_id, *args):
         super().__init__(args)
         self.username = username

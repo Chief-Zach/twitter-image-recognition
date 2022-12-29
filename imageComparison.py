@@ -4,6 +4,7 @@ from image_similarity_measures_library import image_similarity_measures as simil
 import twitterSearch
 import urllib.request as get
 from PIL import Image
+import os
 import main
 
 warnings.filterwarnings("ignore")
@@ -23,10 +24,10 @@ def isSame(metricList, metricJson):
                 pass
             else:
                 return False, metric
-    return True
+    return True, "Pass"
 
 
-def singleCompare(comparisonImage, user_id):
+def singleCompare(comparisonImage, user_id, metricList = ["sre", "fsim", "psnr", "rmse"]):
     # comparisonImage = "images/comparisons/oni1"
     imageURL, imageName = twitterSearch.fetch_image(user_id=user_id)  # backup ID 1517894403758641152
     twitterImage = f"images/twitter/twitterImage{imageName}"
@@ -46,9 +47,32 @@ def singleCompare(comparisonImage, user_id):
         pass
     comp.save(f"{comparisonImage}.tif", 'TIFF')
     twitter.save(f"{twitterImage}.tif", 'TIFF')
-    metricList = ["sre", "fsim", "psnr", "rmse"]
     finalJson = similarity.evaluate.main(f"{twitterImage}.tif", f"{comparisonImage}.tif", metricList)
     print(finalJson["metric"])
     print(isSame(metricList, finalJson["metric"]))
 
-singleCompare("images/comparisons/oni1", 1517894403758641152)
+
+def batchCompare(user_ids, comparisonImage="images/comparisons/image1"):
+    compResults = {}
+
+    comp = Image.open(f"{comparisonImage}.jpg").convert("RGB")
+    comp.save(f"{comparisonImage}.tif", 'TIFF')
+
+    for user_id in user_ids:
+        imageURL, imageName = twitterSearch.fetch_image(user_id=user_id)  # backup ID 1517894403758641152
+        twitterImage = f"images/twitter/twitterImage{imageName}"
+        get.urlretrieve(imageURL, f"{twitterImage}.jpg")
+        twitter = Image.open(f"{twitterImage}.jpg").convert("RGB")
+        twitter = twitter.resize(comp.size, Image.ANTIALIAS)
+        twitter.save(f"{twitterImage}.tif", 'TIFF')
+        metricList = ["sre", "fsim", "psnr", "rmse"]
+        finalJson = similarity.evaluate.main(f"{twitterImage}.tif", f"{comparisonImage}.tif", metricList)
+        # print(finalJson["metric"])
+        output = isSame(metricList, finalJson["metric"])
+        print(output)
+        compResults[user_id] = output
+    print(compResults)
+
+
+# singleCompare("images/comparisons/oni1", 1517894403758641152)
+batchCompare([1436756733775552516, 1517894403758641152, 1375234369636331522], "images/comparisons/image1")
