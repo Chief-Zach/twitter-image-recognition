@@ -3,11 +3,10 @@ import sys, getopt
 
 
 def main(argv):
-    twitterID = 0
-    image = ''
-    batch = []
+    print(argv)
     opts, args = getopt.getopt(argv, "hm:t:i:b:", ["mode=", "twitter=", "image=", "batch="])
     for opt, arg in opts:
+        print(opts, arg)
         if opt == "-h":
             print('twitterComparison.py -m single -t <twitterID> -i <image name>')
             print('twitterComparison.py -m batch -t <twitterID> -b <id batch>')
@@ -19,10 +18,8 @@ def main(argv):
         elif opt in ("-d", "--directory"):
             batch = arg.split(",")
         elif opt in ("-m", "--mode"):
-            if arg == "single":
-                imageComparison.singleCompare(image, twitterID)
-            elif arg == "batch":
-                imageComparison.batchCompare(batch, image)
+            if arg == "single" or arg == "batch":
+                mode = arg
             else:
                 print(f"{arg} is not a valid mode")
                 sys.exit()
@@ -30,6 +27,15 @@ def main(argv):
             print('twitterComparison.py -m single -t <twitterID> -i <image name>')
             print('twitterComparison.py -m batch -t <twitterID> -b <id batch>')
             sys.exit()
+    try:
+        if mode == "single":
+            imageComparison.singleCompare(image, twitterID)
+        elif mode == "batch":
+            imageComparison.batchCompare(batch, image)
+    except UnboundLocalError:
+        print('twitterComparison.py -m single -t <twitterID> -i <image name>')
+        print('twitterComparison.py -m batch -t <twitterID> -b <id batch>')
+        sys.exit()
 
 
 if __name__ == '__main__':

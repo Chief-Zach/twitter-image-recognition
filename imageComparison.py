@@ -28,7 +28,7 @@ def isSame(metricList, metricJson):
 
 
 def singleCompare(comparisonImage, user_id, metricList = ["sre", "fsim", "psnr", "rmse"]):
-    # comparisonImage = "images/comparisons/oni1"
+    comparisonImage = f"images/comparisons/{comparisonImage}"
     imageURL, imageName = twitterSearch.fetch_image(user_id=user_id)  # backup ID 1517894403758641152
     twitterImage = f"images/twitter/twitterImage{imageName}"
     get.urlretrieve(imageURL, f"{twitterImage}.jpg")
