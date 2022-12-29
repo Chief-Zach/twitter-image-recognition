@@ -1,2 +1,16 @@
 /.env
 /venv/
+/.idea/.gitignore
+/images/comparisons/image1.jpg
+/images/comparisons/image1.tif
+/.idea/misc.xml
+/.idea/modules.xml
+/images/comparisons/oni1.jpg
+/.idea/inspectionProfiles/profiles_settings.xml
+/.idea/inspectionProfiles/Project_Default.xml
+/.idea/twitter-image-recognition.iml
+/images/twitter/twitterImage1517894403758641152.jpg
+/images/twitter/twitterImage1517894403758641152.tif
+/.idea/vcs.xml
+/images/comparisons/wp4676622-4k-pc-wallpapers.jpg
+/images/comparisons/wp4676622-4k-pc-wallpapers.tif
