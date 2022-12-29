@@ -1,6 +1,6 @@
 import warnings
 
-import image_similarity_measures as similarity
+from image_similarity_measures_library import image_similarity_measures as similarity
 import twitterSearch
 import urllib.request as get
 from PIL import Image
