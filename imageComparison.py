@@ -29,5 +29,5 @@ else:
 comp.save(f"{comparisonImage}.tif", 'TIFF')
 twitter.save(f"{twitterImage}.tif", 'TIFF')
 
-finalJson = similarity.evaluate.main(f"{twitterImage}.tif", f"{comparisonImage}.tif", ["rmse", "ssim", "sre"])
+finalJson = similarity.evaluate.main(f"{twitterImage}.tif", f"{comparisonImage}.tif", "psnr")
 print(finalJson["metric"])
