@@ -5,7 +5,7 @@ import twitterSearch
 import urllib.request as get
 from PIL import Image
 import os
-import main
+import twitterRecognition
 
 warnings.filterwarnings("ignore")
 
@@ -75,4 +75,4 @@ def batchCompare(user_ids, comparisonImage="images/comparisons/image1"):
 
 
 # singleCompare("images/comparisons/oni1", 1517894403758641152)
-batchCompare([1436756733775552516, 1517894403758641152, 1375234369636331522], "images/comparisons/image1")
+# batchCompare([1436756733775552516, 1517894403758641152, 1375234369636331522], "images/comparisons/image1")
