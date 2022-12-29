@@ -1,8 +1,14 @@
 # Twitter Profile Picture Analyzer
 
 ### Instillation
+Download the repository with:
 ```
 git clone https://github.com/Chief-Zach/twitter-image-recognition 
+```
+
+Install packages:
+```
+pip3 -m install -r requirements.txt
 ```
 
 This is recommended because changes were made to some libraries in order to improve performance with the program.
