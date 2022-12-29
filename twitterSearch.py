@@ -44,12 +44,9 @@ def fetch_image(username=None, user_id=None):
             raise InvalidEntry(username, user_id)
 
     else:
-        raise BrokenCode(BrokenCode.text)
+        raise Exception("Broken Code")
     profileOG = user.profile_image_url
 
     final_image = profileOG.replace("_normal", "")
     print(f"Image Found: {final_image}")
-    return final_image
-
-
-fetch_image(user_id=1517894403758641152)
+    return final_image, user_id if username is None else username
