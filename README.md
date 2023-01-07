@@ -3,7 +3,8 @@
 ![twitter](https://img.shields.io/twitter/follow/chiefz_sol?style=social)
 
 This tool leverages the power of OpenCV and other image processing libraries to compare the profile pictures of 
-Twitter users to pictures of the users choosing. This can be useful for 
+Twitter users to pictures of the users choosing. This can be useful for NFTs within the Crypto NFT community, and can be run in a script form for computer vision applications. 
+
 ### Instillation
 #### Download the repository
 ```
