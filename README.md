@@ -1,5 +1,4 @@
 # Twitter Profile Picture Analyzer
-[![wakatime](https://wakatime.com/badge/user/671d32e4-888d-43d9-8178-5f26d6a7202d.svg)](https://wakatime.com/@671d32e4-888d-43d9-8178-5f26d6a7202d)
 ![twitter](https://img.shields.io/twitter/follow/chiefz_sol?style=social)
 
 This tool leverages the power of OpenCV and other image processing libraries to compare the profile pictures of 
