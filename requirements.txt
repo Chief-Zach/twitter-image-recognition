@@ -13,7 +13,7 @@ oauthlib==3.2.2
 opencv-python==4.6.0.66
 packaging==22.0
 phasepack==1.5
-Pillow==9.3.0
+Pillow==10.3.0
 pip==21.3.1
 pyFFTW==0.13.0
 pyparsing==3.0.9
